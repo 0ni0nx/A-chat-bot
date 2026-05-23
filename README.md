@@ -1,33 +1,63 @@
-# A-chat-app-cli
-This is a chatbot made in Py and Cpp.
-# Distributed CLI Chat Application
+# Distributed Chat Application
 
-A distributed multi-threaded chat application using:
+A distributed real-time chat application built using a multi-threaded C++ TCP server and a Python client with both CLI and GUI support.
 
-- C++17 TCP Server
-- Python 3 Client
+This project demonstrates:
+
+- TCP socket programming
+- Multi-threaded server architecture
+- Cross-language communication (C++ + Python)
 - JSON-based messaging protocol
-- Multi-client support
-- Cross-platform socket handling
+- Real-time messaging
+- GUI application development
+- Thread synchronization and concurrency
 
 ---
 
-## Features
+# Features
 
-### Server (C++17)
+## C++17 Multi-Threaded Server
 
-- Multi-threaded TCP server
-- Handles multiple clients concurrently
-- Thread-safe broadcasting
+- Handles multiple concurrent clients
+- Thread-safe client management using `std::mutex`
+- Dedicated thread per client using `std::thread`
+- Real-time message broadcasting
 - Chat logging to `chat_log.txt`
-- Cross-platform support (Windows/Linux/Mac)
+- Cross-platform socket support:
+  - Linux
+  - macOS
+  - Windows
 
-### Client (Python)
+---
 
-- CLI-based chat interface
-- Simultaneous sending and receiving
-- JSON communication protocol
-- Graceful disconnect handling
+## Python Client
+
+### CLI Mode
+
+- Lightweight terminal chat interface
+- Non-blocking message receive/send using threading
+- JSON protocol support
+
+### GUI Mode
+
+- User-friendly graphical interface
+- Real-time incoming messages
+- Clean chat window layout
+- Username support
+- Responsive message updates using threads
+
+---
+
+# Tech Stack
+
+| Component | Technology |
+|----------|-------------|
+| Backend Server | C++17 |
+| Frontend Client | Python 3 |
+| Networking | TCP Sockets |
+| Communication Protocol | JSON |
+| Concurrency | Threads + Mutex |
+| GUI | Tkinter / PyQt *(replace with yours)* |
 
 ---
 
@@ -35,8 +65,10 @@ A distributed multi-threaded chat application using:
 
 ```text
 distributed-chat-app/
+│
 ├── server.cpp
 ├── client.py
+├── gui_client.py
 ├── Makefile
 ├── README.md
 ├── .gitignore
@@ -49,7 +81,8 @@ distributed-chat-app/
 
 ## Server
 
-- g++ with C++17 support
+- g++
+- C++17 compatible compiler
 
 ## Client
 
@@ -57,15 +90,15 @@ distributed-chat-app/
 
 ---
 
-# Compile Server
+# Build the Server
 
-Linux / macOS:
+## Linux / macOS
 
 ```bash
 make
 ```
 
-Windows (MinGW):
+## Windows (MinGW)
 
 ```bash
 g++ -std=c++17 -pthread server.cpp -o chat_server -lws2_32
@@ -73,13 +106,15 @@ g++ -std=c++17 -pthread server.cpp -o chat_server -lws2_32
 
 ---
 
-# Run Server
+# Run the Server
+
+## Linux / macOS
 
 ```bash
 ./chat_server
 ```
 
-Windows:
+## Windows
 
 ```bash
 chat_server.exe
@@ -87,7 +122,7 @@ chat_server.exe
 
 ---
 
-# Run Client
+# Run the CLI Client
 
 ```bash
 python3 client.py
@@ -101,30 +136,95 @@ python client.py
 
 ---
 
-# JSON Protocol
+# Run the GUI Client
 
-Example message:
+```bash
+python3 gui_client.py
+```
+
+Windows:
+
+```bash
+python gui_client.py
+```
+
+---
+
+# Communication Protocol
+
+The application uses a simple JSON-based protocol.
+
+Example:
 
 ```json
 {
   "type": "msg",
   "user": "Alice",
-  "content": "Hello world"
+  "content": "Hello everyone!"
 }
+```
+
+---
+
+# Server Architecture
+
+- TCP socket listener
+- Thread-per-client model
+- Shared client pool
+- Mutex-protected broadcasting
+- Stream buffering for TCP packet fragmentation handling
+
+---
+
+# Screenshots
+
+## GUI Client
+
+>Add screenshots here for your GitHub portfolio.
+
+Example:
+
+```text
+screenshots/chat_gui.png
 ```
 
 ---
 
 # Future Improvements
 
+- User authentication
 - Private messaging
-- GUI frontend
-- Authentication
-- Encryption (TLS)
+- Chat rooms
+- End-to-end encryption
+- File sharing
+- Voice chat
+- WebSocket support
 - Docker deployment
+- Database-backed message storage
+
+---
+
+# Learning Outcomes
+
+This project helped demonstrate practical understanding of:
+
+- Distributed systems fundamentals
+- Concurrent programming
+- Socket-level networking
+- Cross-platform development
+- Real-time application architecture
+- GUI application integration
 
 ---
 
 # License
 
 MIT License
+
+---
+
+# Author
+
+Your Name Here
+
+GitHub: https://github.com/yourusername
