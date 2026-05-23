@@ -1,0 +1,17 @@
+# Compiled binaries
+chat_server
+chat_server.exe
+
+# Logs
+chat_log.txt
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VSCode
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
