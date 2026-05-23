@@ -1,4 +1,4 @@
-# A-chat-bot
+# A-chat-app-cli
 This is a chatbot made in Py and Cpp.
 # Distributed CLI Chat Application
 
